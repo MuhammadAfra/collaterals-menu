@@ -72,7 +72,7 @@
                         <div class="row mt-2">
                             <div class="col-sm-5 col-md-6">
                                 <label for="exampleFormControlInput1" class="form-label">Tanggal Jatuh Tempo</label>
-                                <input type="date" class="form-control" name="tanggal_jatuh_tempo" id="exampleFormControlInput1">
+                                <input type="date" class="form-control" name="tgl_jatuh_tempo" id="exampleFormControlInput1">
                             </div>
                         </div>
                         <div class="row mt-2">
@@ -85,6 +85,45 @@
                             <div class="col-sm-5 col-md-6 mb-3">
                                 <button type="submit" class="btn btn-primary float-md-end">Submit</button>
                             </div>
+                        </div>
+
+                        <div class="col-12 py-2">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Collateral Utama - Invoice</h3>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body table-responsive p-0">
+                                    <table class="table table-hover text-nowrap">
+                                        <thead>
+                                            <tr>
+                                                <th>Coll ID</th>
+                                                <th>Nilai - Invoice</th>
+                                                <th>Jenis Invoice</th>
+                                                <th>Atas Nama Invoice</th>
+                                                <th>Alamat Nama Invoice</th>
+                                                <th>Tanggal Jatuh Tempo</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($dataInvoice as $item)
+                                            <tr>
+                                                <td>{{ $item->coll_id }}</td>
+                                                <td>{{ $item->nilai_invoice }}</td>
+                                                <td>{{ $item->jenis_invoice }}</td>
+                                                <td>{{ $item->atas_nama_invoice }}</td>
+                                                <td>{{ $item->alamat_nama_invoice }}</td>
+                                                <td>{{ $item->tanggal_jatuh_tempo }}</td>                                         
+                                                <td>{{ $item->status }}</td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
                         </div>
                     </div>
             </section>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Collateral;
 
 class FrontendController extends Controller
 {
@@ -10,28 +11,34 @@ class FrontendController extends Controller
         return view('pages.frontend.index');
     }
 
-    public function car_vehicle(Request $request) {
-        return view('pages.frontend.car_vehicle');
+    public function motor_vehicle(Request $request) {
+        $dataMotorVehicle = Collateral::all();
+        return view('pages.frontend.motor_vehicle', compact('dataMotorVehicle'));
     }
 
-    public function motor_vehicle(Request $request) {
-        return view('pages.frontend.motor_vehicle');
+    public function car_vehicle(Request $request) {
+        $dataCarVehicle = Collateral::all();
+        return view('pages.frontend.car_vehicle', compact('dataCarVehicle'));
     }
 
     public function house(Request $request) {
-        return view('pages.frontend.house');
+        $dataHouse = Collateral::all();
+        return view('pages.frontend.house', compact('dataHouse'));
     }
 
     public function inventory(Request $request) {
-        return view('pages.frontend.inventory');
+        $dataInventory = Collateral::all();
+        return view('pages.frontend.inventory' , compact('dataInventory'));
     }
 
     public function invoice(Request $request) {
-        return view('pages.frontend.invoice');
+        $dataInvoice = Collateral::all();
+        return view('pages.frontend.invoice', compact('dataInvoice'));
     }
 
     public function corporate(Request $request) {
-        return view('pages.frontend.corporate');
+        $dataCorporate = Collateral::all();
+        return view('pages.frontend.corporate', compact('dataCorporate'));
     }
 }
 

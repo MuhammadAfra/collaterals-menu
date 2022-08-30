@@ -12,14 +12,9 @@ class MotorController extends Controller
         return view('pages.frontend.index');
     }
 
-    public function create(Request $request)
-    {
-        return view('pages.frontend.motor_vehicle');
-    }
-
     public function store(Request $request)
     {
-        // return $request->all();
+
         $data = $request->all();
         Collateral::create($data);
 

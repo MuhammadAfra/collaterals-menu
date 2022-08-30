@@ -134,6 +134,61 @@
                                 <button type="submit" class="btn btn-primary float-md-end">Submit</button>
                             </div>
                         </div>
+
+                        <div class="col-12 py-2">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Collateral Utama - Motor Vehicle</h3>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body table-responsive p-0">
+                                    <table class="table table-hover text-nowrap">
+                                        <thead>
+                                            <tr>
+                                                <th>Coll ID</th>
+                                                <th>Nilai - Car Vehicle</th>
+                                                <th>Merk</th>
+                                                <th>Type</th>
+                                                <th>Model</th>
+                                                <th>Peruntukan</th>
+                                                <th>Nama di BPKB</th>
+                                                <th>Alamat di BPKB</th>
+                                                <th>No Frame</th>
+                                                <th>No Engine</th>
+                                                <th>No Polisi</th>
+                                                <th>Colour</th>
+                                                <th>Tahun</th>
+                                                <th>Silinder</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($dataCarVehicle as $item)
+                                            <tr>
+                                                <td>{{ $item->coll_id }}</td>
+                                                <td>{{ $item->nilai_car_vehicle }}</td>
+                                                <td>{{ $item->merk }}</td>
+                                                <td>{{ $item->type }}</td>
+                                                <td>{{ $item->model }}</td>
+                                                <td>{{ $item->peruntukan }}</td>
+                                                <td>{{ $item->nama_di_bpkb }}</td>
+                                                <td>{{ $item->alamat_di_bpkb }}</td>
+                                                <td>{{ $item->no_frame }}</td>
+                                                <td>{{ $item->no_engine }}</td>
+                                                <td>{{ $item->no_pol }}</td>
+                                                <td>{{ $item->colour }}</td>
+                                                <td>{{ $item->tahun }}</td>
+                                                <td>{{ $item->silinder }}</td>
+                                                <td>{{ $item->status }}</td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                        </div>
                     </div>
             </section>
     </div>

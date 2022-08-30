@@ -98,6 +98,49 @@
                                 <button type="submit" class="btn btn-primary float-md-end">Submit</button>
                             </div>
                         </div>
+
+                        <div class="col-12 py-2">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Collateral Utama - Motor Vehicle</h3>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body table-responsive p-0">
+                                    <table class="table table-hover text-nowrap">
+                                        <thead>
+                                            <tr>
+                                                <th>Coll ID</th>
+                                                <th>Nilai - Inv</th>
+                                                <th>Nama Inventory</th>
+                                                <th>Besarnya Inventory</th>
+                                                <th>Nilai Inventory</th>
+                                                <th>Alamat Inventory</th>
+                                                <th>Atas Nama Inventory</th>
+                                                <th>Alamat Atas Nama Inventory</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($dataInventory as $item)
+                                            <tr>
+                                                <td>{{ $item->coll_id }}</td>
+                                                <td>{{ $item->nilai_inv }}</td>
+                                                <td>{{ $item->nama_inventory }}</td>
+                                                <td>{{ $item->besarnya_inventory }}</td>
+                                                <td>{{ $item->nilai_inventory }}</td>
+                                                <td>{{ $item->alamat_inventory }}</td>
+                                                <td>{{ $item->atas_nama_inventory }}</td>
+                                                <td>{{ $item->alamat_atas_nama_inventory }}</td>
+                                                <td>{{ $item->status }}</td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                        </div>
                     </div>
             </section>
     </div>

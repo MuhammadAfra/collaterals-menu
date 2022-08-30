@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Collateral extends Model
 {
@@ -53,4 +54,5 @@ class Collateral extends Model
         'nama_pt_pemberi_corporate_guarantie',
         'notelp_pt_pemberi_corporate_guarantie',
     ];
+
 }

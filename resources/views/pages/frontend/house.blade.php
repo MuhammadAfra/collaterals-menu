@@ -97,6 +97,47 @@
                                 <button type="submit" class="btn btn-primary float-md-end">Submit</button>
                             </div>
                         </div>
+
+                        <div class="col-12 py-2">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Collateral Utama - Motor Vehicle</h3>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body table-responsive p-0">
+                                    <table class="table table-hover text-nowrap">
+                                        <thead>
+                                            <tr>
+                                                <th>Coll ID</th>
+                                                <th>Nilai - House/Land</th>
+                                                <th>No. SHM/ No. HGB/ No. HGU</th>
+                                                <th>Luas</th>
+                                                <th>Atas Nama</th>
+                                                <th>Alamat</th>
+                                                <th>Nilai Appraisal</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($dataHouse as $item)
+                                            <tr>
+                                                <td>{{ $item->coll_id }}</td>
+                                                <td>{{ $item->nilai_house_land}}</td>
+                                                <td>{{ $item->no_shm_no_hgu }}</td>
+                                                <td>{{ $item->luas }}</td>
+                                                <td>{{ $item->atas_nama }}</td>
+                                                <td>{{ $item->alamat }}</td>
+                                                <td>{{ $item->nilai_appraisal }}</td>
+                                                <td>{{ $item->status }}</td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                        </div>
                     </div>
             </section>
     </div>

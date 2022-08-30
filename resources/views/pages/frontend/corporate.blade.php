@@ -48,40 +48,81 @@
                         <div class="row mt-2">
                             <div class="col-sm-5 col-md-6">
                                 <label for="exampleFormControlInput1" class="form-label">Nilai - Corporate Guarantie</label>
-                                <input type="input" class="form-control" name="nilai_corporate_guarantie" id="exampleFormControlInput1">
+                                <input type="input" class="form-control" name="nilai_corporate_guarantie"
+                                    id="exampleFormControlInput1">
                             </div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-sm-5 col-md-6">
                                 <label for="exampleFormControlInput1" class="form-label">Nama PT Penerima Corporate
                                     Guarantie</label>
-                                <input type="input" class="form-control" name="nama_pt_penerima_corporate" id="exampleFormControlInput1">
+                                <input type="input" class="form-control" name="nama_pt_penerima_corporate"
+                                    id="exampleFormControlInput1">
                             </div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-sm-5 col-md-6">
                                 <label for="exampleFormControlInput1" class="form-label">Nama PT Pemberi Corporate
                                     Guarantie</label>
-                                <input type="input" class="form-control" name="nama_pt_pemberi_corporate_guarantie" id="exampleFormControlInput1">
+                                <input type="input" class="form-control" name="nama_pt_pemberi_corporate_guarantie"
+                                    id="exampleFormControlInput1">
                             </div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-sm-5 col-md-6">
                                 <label for="exampleFormControlInput1" class="form-label">Notelp PT Pemberi Corporate
                                     Guarantie</label>
-                                <input type="input" class="form-control" name="notelp_pt_pemberi_corporate_guarantie" id="exampleFormControlInput1">
+                                <input type="input" class="form-control" name="notelp_pt_pemberi_corporate_guarantie"
+                                    id="exampleFormControlInput1">
                             </div>
                         </div>
                         <div class="row mt-2">
-                          <div class="col-sm-5 col-md-6">
-                              <label for="exampleFormControlInput1" class="form-label">Status</label>
-                              <input type="input" class="form-control"  name="status" id="exampleFormControlInput1">
-                          </div>
-                      </div>
+                            <div class="col-sm-5 col-md-6">
+                                <label for="exampleFormControlInput1" class="form-label">Status</label>
+                                <input type="input" class="form-control" name="status" id="exampleFormControlInput1">
+                            </div>
+                        </div>
                         <div class="row mt-3">
                             <div class="col-sm-5 col-md-6 mb-3">
                                 <button type="submit" class="btn btn-primary float-md-end">Submit</button>
                             </div>
+                        </div>
+
+                        <div class="col-12 py-2">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Collateral Utama - Motor Vehicle</h3>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body table-responsive p-0">
+                                    <table class="table table-hover text-nowrap">
+                                        <thead>
+                                            <tr>
+                                                <th>Coll ID</th>
+                                                <th>Nilai - Corporate Gurantie</th>
+                                                <th>Nama PT Penerima Corporate Guarantie</th>
+                                                <th>Nama PT Pemberi Corporate Guarantie</th>
+                                                <th>Notelp PT Pemberi Corporate Guarantie</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($dataCorporate as $item)
+                                            <tr>
+                                                <td>{{ $item->coll_id }}</td>
+                                                <td>{{ $item->nilai_corporate_guarantie }}</td>
+                                                <td>{{ $item->nama_pt_penerima_corporate }}</td>
+                                                <td>{{ $item->nama_pt_pemberi_corporate_guarantie }}</td>
+                                                <td>{{ $item->notelp_pt_pemberi_corporate_guarantie }}</td>
+                                                <td>{{ $item->status }}</td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
                         </div>
                     </div>
             </section>
