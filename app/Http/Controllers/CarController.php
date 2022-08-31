@@ -11,15 +11,11 @@ class CarController extends Controller
         return view('pages.frontend.index');
     }
 
-    public function create(Request $request) {
-        return view('pages.frontend.car_vehicle');
-    }
-
     public function store(Request $request) {
 
         $data = $request->all();
         Collateral::create($data);
 
-        return redirect()->route('car_vehicle');
+        return redirect()->route('car_vehicle')->with('success', 'Data Berhasil diMasukkan!');
     }
 }

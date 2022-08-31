@@ -14,10 +14,10 @@ class MotorController extends Controller
 
     public function store(Request $request)
     {
-
         $data = $request->all();
         Collateral::create($data);
 
-        return redirect()->route('motor_vehicle');
+        return redirect()->route('motor_vehicle')->with('success', 'Data Berhasil diMasukkan!');
+        
     }
 }

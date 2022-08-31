@@ -15,6 +15,13 @@
             </div><!-- /.container-fluid -->
         </div>
         <!-- Main content -->
+        @if (session('success'))
+            <div class="alert alert-success alert-dismissable custom-success-box" style="margin: 15px;">
+                <a href="{{ route('motor_vehicle') }}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong> {{ session('success') }} </strong>
+            </div>
+        @endif
+
         <form action="{{ route('motorVehicleStore') }}" method="POST">
             @csrf
             <section class="col-xxl-6 connectedSortable px-5">
@@ -43,7 +50,9 @@
                         <div class="row mt-2">
                             <div class="col-sm-5 col-md-6">
                                 <label for="exampleFormControlInput1" class="form-label">Coll ID</label>
-                                <input type="input" class="form-control" name="coll_id" id="exampleFormControlInput1">
+                                <input type="input" class="form-control" readonly disabled
+                                    value="{{ str_pad($coll_id, 4, 0, STR_PAD_LEFT) }}" name="coll_id"
+                                    id="exampleFormControlInput1">
                             </div>
                         </div>
                         <div class="row mt-2">
@@ -89,7 +98,8 @@
                         <div class="row mt-2">
                             <div class="col-sm-5 col-md-6">
                                 <label for="exampleFormControlInput1" class="form-label">No Frame</label>
-                                <input type="input" class="form-control" name="no_frame" id="exampleFormControlInput1">
+                                <input type="input" class="form-control" name="no_frame"
+                                    id="exampleFormControlInput1">
                             </div>
                         </div>
                         <div class="row mt-2">
@@ -163,23 +173,23 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($dataMotorVehicle as $item)
-                                            <tr>
-                                                <td>{{ $item->coll_id }}</td>
-                                                <td>{{ $item->nilai_motor_vehicle }}</td>
-                                                <td>{{ $item->merk }}</td>
-                                                <td>{{ $item->type }}</td>
-                                                <td>{{ $item->model }}</td>
-                                                <td>{{ $item->jenis_motor_sport_listrik }}</td>
-                                                <td>{{ $item->nama_di_bpkb }}</td>
-                                                <td>{{ $item->no_frame }}</td>
-                                                <td>{{ $item->no_engine }}</td>
-                                                <td>{{ $item->no_pol }}</td>
-                                                <td>{{ $item->colour }}</td>
-                                                <td>{{ $item->tahun }}</td>
-                                                <td>{{ $item->silinder }}</td>
-                                                <td>{{ $item->status }}</td>
-                                            </tr>
+                                            @foreach ($nilai_motor_vehicles as $item)
+                                                <tr>
+                                                    <td>{{ str_pad($item->coll_id, 4, 0, STR_PAD_LEFT) }}</td>
+                                                    <td class="text-center">{{ $item->nilai_motor_vehicle }}</td>
+                                                    <td>{{ $item->merk }}</td>
+                                                    <td>{{ $item->type }}</td>
+                                                    <td>{{ $item->model }}</td>
+                                                    <td>{{ $item->jenis_motor_sport_listrik }}</td>
+                                                    <td>{{ $item->nama_di_bpkb }}</td>
+                                                    <td>{{ $item->no_frame }}</td>
+                                                    <td>{{ $item->no_engine }}</td>
+                                                    <td>{{ $item->no_pol }}</td>
+                                                    <td>{{ $item->colour }}</td>
+                                                    <td>{{ $item->tahun }}</td>
+                                                    <td>{{ $item->silinder }}</td>
+                                                    <td>{{ $item->status }}</td>
+                                                </tr>
                                             @endforeach
                                         </tbody>
                                     </table>

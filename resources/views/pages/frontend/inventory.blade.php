@@ -14,6 +14,14 @@
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>
+
+        @if (session('success'))
+            <div class="alert alert-success alert-dismissable custom-success-box" style="margin: 15px;">
+                <a href="{{ route('inventory') }}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong> {{ session('success') }} </strong>
+            </div>
+        @endif
+
         <!-- Main content -->
         <form action="{{ route('inventoryStore') }}" method="POST">
             @csrf
@@ -42,7 +50,8 @@
                         <div class="row mt-2">
                             <div class="col-sm-5 col-md-6">
                                 <label for="exampleFormControlInput1" class="form-label">Coll ID</label>
-                                <input type="input" class="form-control" name="coll_id" id="exampleFormControlInput1">
+                                <input type="input" class="form-control" value="{{ str_pad($coll_id, 4, 0, STR_PAD_LEFT) }}"
+                                    readonly disabled name="coll_id" id="exampleFormControlInput1">
                             </div>
                         </div>
                         <div class="row mt-2">
@@ -54,37 +63,44 @@
                         <div class="row mt-2">
                             <div class="col-sm-5 col-md-6">
                                 <label for="exampleFormControlInput1" class="form-label">Nama Inventory</label>
-                                <input type="input" class="form-control" name="nama_inventory" id="exampleFormControlInput1">
+                                <input type="input" class="form-control" name="nama_inventory"
+                                    id="exampleFormControlInput1">
                             </div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-sm-5 col-md-6">
                                 <label for="exampleFormControlInput1" class="form-label">Besarnya Inventory</label>
-                                <input type="input" class="form-control" name="besarnya_inventory" id="exampleFormControlInput1">
+                                <input type="input" class="form-control" name="besarnya_inventory"
+                                    id="exampleFormControlInput1">
                             </div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-sm-5 col-md-6">
                                 <label for="exampleFormControlInput1" class="form-label">Nilai Inventory</label>
-                                <input type="input" class="form-control" name="nilai_inventory" id="exampleFormControlInput1">
+                                <input type="input" class="form-control" name="nilai_inventory"
+                                    id="exampleFormControlInput1">
                             </div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-sm-5 col-md-6">
                                 <label for="exampleFormControlInput1" class="form-label">Alamat Inventory</label>
-                                <input type="input" class="form-control" name="alamat_inventory" id="exampleFormControlInput1">
+                                <input type="input" class="form-control" name="alamat_inventory"
+                                    id="exampleFormControlInput1">
                             </div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-sm-5 col-md-6">
                                 <label for="exampleFormControlInput1" class="form-label">Atas Nama Inventory</label>
-                                <input type="input" class="form-control" name="atas_nama_inventory" id="exampleFormControlInput1">
+                                <input type="input" class="form-control" name="atas_nama_inventory"
+                                    id="exampleFormControlInput1">
                             </div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-sm-5 col-md-6">
-                                <label for="exampleFormControlInput1" class="form-label">Alamat Atas Nama Inventory</label>
-                                <input type="input" class="form-control" name="alamat_atas_nama_inventory" id="exampleFormControlInput1">
+                                <label for="exampleFormControlInput1" class="form-label">Alamat Atas Nama
+                                    Inventory</label>
+                                <input type="input" class="form-control" name="alamat_atas_nama_inventory"
+                                    id="exampleFormControlInput1">
                             </div>
                         </div>
                         <div class="row mt-2">
@@ -102,7 +118,7 @@
                         <div class="col-12 py-2">
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title">Collateral Utama - Motor Vehicle</h3>
+                                    <h3 class="card-title">Collateral Utama - Inventory</h3>
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body table-responsive p-0">
@@ -121,18 +137,18 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($dataInventory as $item)
-                                            <tr>
-                                                <td>{{ $item->coll_id }}</td>
-                                                <td>{{ $item->nilai_inv }}</td>
-                                                <td>{{ $item->nama_inventory }}</td>
-                                                <td>{{ $item->besarnya_inventory }}</td>
-                                                <td>{{ $item->nilai_inventory }}</td>
-                                                <td>{{ $item->alamat_inventory }}</td>
-                                                <td>{{ $item->atas_nama_inventory }}</td>
-                                                <td>{{ $item->alamat_atas_nama_inventory }}</td>
-                                                <td>{{ $item->status }}</td>
-                                            </tr>
+                                            @foreach ($nilai_inve as $item)
+                                                <tr>
+                                                    <td>{{ str_pad($item->coll_id, 4, 0, STR_PAD_LEFT) }}</td>
+                                                    <td>{{ $item->nilai_inv }}</td>
+                                                    <td>{{ $item->nama_inventory }}</td>
+                                                    <td>{{ $item->besarnya_inventory }}</td>
+                                                    <td>{{ $item->nilai_inventory }}</td>
+                                                    <td>{{ $item->alamat_inventory }}</td>
+                                                    <td>{{ $item->atas_nama_inventory }}</td>
+                                                    <td>{{ $item->alamat_atas_nama_inventory }}</td>
+                                                    <td>{{ $item->status }}</td>
+                                                </tr>
                                             @endforeach
                                         </tbody>
                                     </table>

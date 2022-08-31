@@ -14,6 +14,14 @@
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>
+
+        @if (session('success'))
+            <div class="alert alert-success alert-dismissable custom-success-box" style="margin: 15px;">
+                <a href="{{ route('invoice') }}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong> {{ session('success') }} </strong>
+            </div>
+        @endif
+        
         <!-- Main content -->
         <form action="{{ route('invoiceStore') }}" method="POST">
             @csrf
@@ -42,37 +50,44 @@
                         <div class="row mt-2">
                             <div class="col-sm-5 col-md-6">
                                 <label for="exampleFormControlInput1" class="form-label">Coll ID</label>
-                                <input type="input" class="form-control"  name="coll_id" id="exampleFormControlInput1">
+                                <input type="input" class="form-control" readonly disabled
+                                    value="{{ str_pad($coll_id, 4, 0, STR_PAD_LEFT) }}" name="coll_id"
+                                    id="exampleFormControlInput1">
                             </div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-sm-5 col-md-6">
                                 <label for="exampleFormControlInput1" class="form-label">Nilai - Invoice</label>
-                                <input type="input" class="form-control" name="nilai_invoice" id="exampleFormControlInput1">
+                                <input type="input" class="form-control" name="nilai_invoice"
+                                    id="exampleFormControlInput1">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-5 col-md-6">
                                 <label for="exampleFormControlInput1" class="form-label">Jenis Invoice</label>
-                                <input type="input" class="form-control" name="enis_invoice" id="exampleFormControlInput1">
+                                <input type="input" class="form-control" name="enis_invoice"
+                                    id="exampleFormControlInput1">
                             </div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-sm-5 col-md-6">
                                 <label for="exampleFormControlInput1" class="form-label">Atas Nama Invoice</label>
-                                <input type="input" class="form-control"  name="atas_nama_invoice" id="exampleFormControlInput1">
+                                <input type="input" class="form-control" name="atas_nama_invoice"
+                                    id="exampleFormControlInput1">
                             </div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-sm-5 col-md-6">
                                 <label for="exampleFormControlInput1" class="form-label">Alamat Nama Invoice</label>
-                                <input type="input" class="form-control" name="alamat_nama_invoice" id="exampleFormControlInput1">
+                                <input type="input" class="form-control" name="alamat_nama_invoice"
+                                    id="exampleFormControlInput1">
                             </div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-sm-5 col-md-6">
                                 <label for="exampleFormControlInput1" class="form-label">Tanggal Jatuh Tempo</label>
-                                <input type="date" class="form-control" name="tgl_jatuh_tempo" id="exampleFormControlInput1">
+                                <input type="date" class="form-control" name="tgl_jatuh_tempo"
+                                    id="exampleFormControlInput1">
                             </div>
                         </div>
                         <div class="row mt-2">
@@ -107,16 +122,16 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($dataInvoice as $item)
-                                            <tr>
-                                                <td>{{ $item->coll_id }}</td>
-                                                <td>{{ $item->nilai_invoice }}</td>
-                                                <td>{{ $item->jenis_invoice }}</td>
-                                                <td>{{ $item->atas_nama_invoice }}</td>
-                                                <td>{{ $item->alamat_nama_invoice }}</td>
-                                                <td>{{ $item->tanggal_jatuh_tempo }}</td>                                         
-                                                <td>{{ $item->status }}</td>
-                                            </tr>
+                                            @foreach ($nilai_invoices as $item)
+                                                <tr>
+                                                    <td>{{ str_pad($item->coll_id, 4, 0, STR_PAD_LEFT) }}</td>
+                                                    <td>{{ $item->nilai_invoice }}</td>
+                                                    <td>{{ $item->jenis_invoice }}</td>
+                                                    <td>{{ $item->atas_nama_invoice }}</td>
+                                                    <td>{{ $item->alamat_nama_invoice }}</td>
+                                                    <td>{{ $item->tgl_jatuh_tempo }}</td>
+                                                    <td>{{ $item->status }}</td>
+                                                </tr>
                                             @endforeach
                                         </tbody>
                                     </table>

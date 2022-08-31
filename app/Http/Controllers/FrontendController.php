@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Collateral;
+use Illuminate\Support\Facades\DB;
+
 
 class FrontendController extends Controller
 {
@@ -11,34 +13,49 @@ class FrontendController extends Controller
         return view('pages.frontend.index');
     }
 
+
+    //UTAMA
+
     public function motor_vehicle(Request $request) {
-        $dataMotorVehicle = Collateral::all();
-        return view('pages.frontend.motor_vehicle', compact('dataMotorVehicle'));
+        $nilai_motor_vehicles = DB::table('collaterals')->where('nilai_motor_vehicle', '>', 1)->get();
+        // $dataMotorVehicle = Collateral::all();
+        $coll_id = Collateral::pluck('coll_id')->last() + 1;
+        return view('pages.frontend.motor_vehicle', compact('coll_id', 'nilai_motor_vehicles'));
     }
 
     public function car_vehicle(Request $request) {
-        $dataCarVehicle = Collateral::all();
-        return view('pages.frontend.car_vehicle', compact('dataCarVehicle'));
+        $nilai_car_vehicles = DB::table('collaterals')->where('nilai_car_vehicle', '>', 1)->get();
+        // $dataCarVehicle = Collateral::all();
+        $coll_id = Collateral::pluck('coll_id')->last() + 1;
+        return view('pages.frontend.car_vehicle', compact('nilai_car_vehicles', 'coll_id'));
     }
 
     public function house(Request $request) {
-        $dataHouse = Collateral::all();
-        return view('pages.frontend.house', compact('dataHouse'));
+        $nilai_houses = DB::table('collaterals')->where('nilai_house_land', '>', 1)->get();
+        // $dataHouse = Collateral::all();
+        $coll_id = Collateral::pluck('coll_id')->last() + 1;
+        return view('pages.frontend.house', compact('nilai_houses', 'coll_id'));
     }
 
     public function inventory(Request $request) {
-        $dataInventory = Collateral::all();
-        return view('pages.frontend.inventory' , compact('dataInventory'));
+        $nilai_inve = DB::table('collaterals')->where('nilai_inv', '>', 1)->get();
+        // $dataInventory = Collateral::all();
+        $coll_id = Collateral::pluck('coll_id')->last() + 1;
+        return view('pages.frontend.inventory' , compact('nilai_inve', 'coll_id'));
     }
 
     public function invoice(Request $request) {
-        $dataInvoice = Collateral::all();
-        return view('pages.frontend.invoice', compact('dataInvoice'));
+        $nilai_invoices = DB::table('collaterals')->where('nilai_invoice', '>', 1)->get();
+        // $dataInvoice = Collateral::all();
+        $coll_id = Collateral::pluck('coll_id')->last() + 1;
+        return view('pages.frontend.invoice', compact('nilai_invoices', 'coll_id'));
     }
 
     public function corporate(Request $request) {
-        $dataCorporate = Collateral::all();
-        return view('pages.frontend.corporate', compact('dataCorporate'));
+        $nilai_corporates = DB::table('collaterals')->where('nilai_corporate_guarantie', '>', 1)->get();
+        // $dataCorporate = Collateral::all();
+        $coll_id = Collateral::pluck('coll_id')->last() + 1;
+        return view('pages.frontend.corporate', compact('nilai_corporates', 'coll_id'));
     }
 }
 

@@ -11,16 +11,12 @@ class CorporateController extends Controller
         return view('pages.frontend.index');
     }
 
-    public function create(Request $request) {
-        return view('pages.frontend.corporate');
-    }
-
     public function store(Request $request) {
         // return $request->all();
 
         $data = $request->all();
         Collateral::create($data);
 
-        return redirect()->route('corporate');
+        return redirect()->route('corporate')->with('success', 'Data Berhasil diMasukkan!');
     }
 }

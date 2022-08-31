@@ -14,6 +14,14 @@
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>
+
+        @if (session('success'))
+            <div class="alert alert-success alert-dismissable custom-success-box" style="margin: 15px;">
+                <a href="{{ route('house') }}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong> {{ session('success') }} </strong>
+            </div>
+        @endif
+
         <!-- Main content -->
         <form action="{{ route('houseStore') }}" method="POST">
             @csrf
@@ -42,7 +50,9 @@
                         <div class="row mt-2">
                             <div class="col-sm-5 col-md-6">
                                 <label for="exampleFormControlInput1" class="form-label">Coll ID</label>
-                                <input type="input" class="form-control" name="coll_id" id="exampleFormControlInput1">
+                                <input type="input" class="form-control" readonly disabled
+                                    value="{{ str_pad($coll_id, 4, 0, STR_PAD_LEFT) }}" name="coll_id"
+                                    id="exampleFormControlInput1">
                             </div>
                         </div>
                         <div class="row mt-2">
@@ -57,7 +67,7 @@
                                 <label for="exampleFormControlInput1" class="form-label">No. SHM/ No. HGB/ No. HGU/ No. HP/
                                     No. SHSRS/ No.
                                     GIRIK</label>
-                                <input type="input" class="form-control" name="no_shm_no_hgu"
+                                <input type="input" class="form-control" name="no_shm_no_hgb"
                                     id="exampleFormControlInput1">
                             </div>
                         </div>
@@ -101,7 +111,7 @@
                         <div class="col-12 py-2">
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title">Collateral Utama - Motor Vehicle</h3>
+                                    <h3 class="card-title">Collateral Utama - House/Land</h3>
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body table-responsive p-0">
@@ -119,17 +129,17 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($dataHouse as $item)
-                                            <tr>
-                                                <td>{{ $item->coll_id }}</td>
-                                                <td>{{ $item->nilai_house_land}}</td>
-                                                <td>{{ $item->no_shm_no_hgu }}</td>
-                                                <td>{{ $item->luas }}</td>
-                                                <td>{{ $item->atas_nama }}</td>
-                                                <td>{{ $item->alamat }}</td>
-                                                <td>{{ $item->nilai_appraisal }}</td>
-                                                <td>{{ $item->status }}</td>
-                                            </tr>
+                                            @foreach ($nilai_houses as $item)
+                                                <tr>
+                                                    <td>{{ str_pad($item->coll_id, 4, 0, STR_PAD_LEFT) }}</td>
+                                                    <td>{{ $item->nilai_house_land }}</td>
+                                                    <td>{{ $item->no_shm_no_hgb }}</td>
+                                                    <td>{{ $item->luas }}</td>
+                                                    <td>{{ $item->atas_nama }}</td>
+                                                    <td>{{ $item->alamat }}</td>
+                                                    <td>{{ $item->nilai_appraisal }}</td>
+                                                    <td>{{ $item->status }}</td>
+                                                </tr>
                                             @endforeach
                                         </tbody>
                                     </table>

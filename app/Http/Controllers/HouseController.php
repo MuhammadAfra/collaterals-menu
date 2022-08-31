@@ -11,16 +11,12 @@ class HouseController extends Controller
         return view('pages.frontend.index');
     }
 
-    public function create(Request $request) {
-        return view('pages.frontend.house');
-    }
-
     public function store(Request $request) {
         // return $request->all();
 
         $data = $request->all();
         Collateral::create($data);
 
-        return redirect()->route('house');
+        return redirect()->route('house')->with('success', 'Data Berhasil diMasukkan!');
     }
 }
