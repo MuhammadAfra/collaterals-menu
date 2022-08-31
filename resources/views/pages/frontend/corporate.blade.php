@@ -66,7 +66,7 @@
                             <div class="col-sm-5 col-md-6">
                                 <label for="exampleFormControlInput1" class="form-label">Nama PT Penerima Corporate
                                     Guarantie</label>
-                                <input type="input" class="form-control" name="nama_pt_penerima_guarantie"
+                                <input type="input" class="form-control" name="nama_pt_penerima_corporate_guarantie"
                                     id="exampleFormControlInput1">
                             </div>
                         </div>

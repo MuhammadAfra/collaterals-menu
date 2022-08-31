@@ -85,6 +85,27 @@
                         </div>
                         <div class="row mt-2">
                             <div class="col-sm-5 col-md-6">
+                                <label for="exampleFormControlInput1" class="form-label">No. Fiducia</label>
+                                <input type="input" class="form-control" name="no_fiducia"
+                                    id="exampleFormControlInput1">
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-sm-5 col-md-6">
+                                <label for="exampleFormControlInput1" class="form-label">Nilai Fiducia</label>
+                                <input type="input" class="form-control" name="nilai_fiducia"
+                                    id="exampleFormControlInput1">
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-sm-5 col-md-6">
+                                <label for="exampleFormControlInput1" class="form-label">Tanggal Fiducia</label>
+                                <input type="date" class="form-control" name="tgl_fiducia"
+                                    id="exampleFormControlInput1">
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-sm-5 col-md-6">
                                 <label for="exampleFormControlInput1" class="form-label">Tanggal Jatuh Tempo</label>
                                 <input type="date" class="form-control" name="tgl_jatuh_tempo"
                                     id="exampleFormControlInput1">
@@ -117,6 +138,9 @@
                                                 <th>Jenis Invoice</th>
                                                 <th>Atas Nama Invoice</th>
                                                 <th>Alamat Nama Invoice</th>
+                                                <th>No. Fiducia</th>
+                                                <th>Nilai Fiducia</th>
+                                                <th>Tanggal Fiducia</th>
                                                 <th>Tanggal Jatuh Tempo</th>
                                                 <th>Status</th>
                                             </tr>
@@ -129,6 +153,9 @@
                                                     <td>{{ $item->jenis_invoice }}</td>
                                                     <td>{{ $item->atas_nama_invoice }}</td>
                                                     <td>{{ $item->alamat_nama_invoice }}</td>
+                                                    <td>{{ $item->no_fiducia }}</td>
+                                                    <td>{{ $item->nilai_fiducia }}</td>
+                                                    <td>{{ $item->tgl_fiducia }}</td>
                                                     <td>{{ $item->tgl_jatuh_tempo }}</td>
                                                     <td>{{ $item->status }}</td>
                                                 </tr>
