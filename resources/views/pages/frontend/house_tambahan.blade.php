@@ -17,17 +17,17 @@
 
         @if (session('success'))
             <div class="alert alert-success alert-dismissable custom-success-box" style="margin: 15px;">
-                <a href="{{ route('corporate') }}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <a href="{{ route('house') }}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                 <strong> {{ session('success') }} </strong>
             </div>
         @endif
 
         <!-- Main content -->
-        <form action="{{ route('corporateStore') }}" method="POST">
+        <form action="{{ route('houseStore') }}" method="POST">
             @csrf
             <section class="col-xxl-6 connectedSortable px-5">
                 <div class="container mt-3">
-                    <h3>Collateral Utama - Corporate Guarantie</h3>
+                    <h3>Collateral Utama - House/Land</h3>
                     <div class="container px-5">
                         <div class="row">
                             <div class="col-sm-5 col-md-6">
@@ -57,32 +57,42 @@
                         </div>
                         <div class="row mt-2">
                             <div class="col-sm-5 col-md-6">
-                                <label for="exampleFormControlInput1" class="form-label">Nilai - Corporate Guarantie</label>
-                                <input type="input" class="form-control" name="nilai_corporate_guarantie"
+                                <label for="exampleFormControlInput1" class="form-label">Nilai - House/Land</label>
+                                <input type="input" class="form-control" name="nilai_house_land"
                                     id="exampleFormControlInput1">
                             </div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-sm-5 col-md-6">
-                                <label for="exampleFormControlInput1" class="form-label">Nama PT Penerima Corporate
-                                    Guarantie</label>
-                                <input type="input" class="form-control" name="nama_pt_penerima_corporate_guarantie"
+                                <label for="exampleFormControlInput1" class="form-label">No. SHM/ No. HGB/ No. HGU/ No. HP/
+                                    No. SHSRS/ No.
+                                    GIRIK</label>
+                                <input type="input" class="form-control" name="no_shm_no_hgb"
                                     id="exampleFormControlInput1">
                             </div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-sm-5 col-md-6">
-                                <label for="exampleFormControlInput1" class="form-label">Nama PT Pemberi Corporate
-                                    Guarantie</label>
-                                <input type="input" class="form-control" name="nama_pt_pemberi_corporate_guarantie"
-                                    id="exampleFormControlInput1">
+                                <label for="exampleFormControlInput1" class="form-label">Luas</label>
+                                <input type="input" class="form-control" name="luas" id="exampleFormControlInput1">
                             </div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-sm-5 col-md-6">
-                                <label for="exampleFormControlInput1" class="form-label">Notelp PT Pemberi Corporate
-                                    Guarantie</label>
-                                <input type="input" class="form-control" name="notelp_pt_pemberi_corporate_guarantie"
+                                <label for="exampleFormControlInput1" class="form-label">Atas Nama</label>
+                                <input type="input" class="form-control" name="atas_nama" id="exampleFormControlInput1">
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-sm-5 col-md-6">
+                                <label for="exampleFormControlInput1" class="form-label">Alamat</label>
+                                <input type="input" class="form-control" name="alamat" id="exampleFormControlInput1">
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-sm-5 col-md-6">
+                                <label for="exampleFormControlInput1" class="form-label">Nilai Appraisal</label>
+                                <input type="input" class="form-control" name="nilai_appraisal"
                                     id="exampleFormControlInput1">
                             </div>
                         </div>
@@ -101,7 +111,7 @@
                         <div class="col-12 py-2">
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title">Collateral Utama - Corporate</h3>
+                                    <h3 class="card-title">Collateral Utama - House/Land</h3>
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body table-responsive p-0">
@@ -109,21 +119,25 @@
                                         <thead>
                                             <tr>
                                                 <th>Coll ID</th>
-                                                <th>Nilai - Corporate Gurantie</th>
-                                                <th>Nama PT Penerima Corporate Guarantie</th>
-                                                <th>Nama PT Pemberi Corporate Guarantie</th>
-                                                <th>Notelp PT Pemberi Corporate Guarantie</th>
+                                                <th>Nilai - House/Land</th>
+                                                <th>No. SHM/ No. HGB/ No. HGU</th>
+                                                <th>Luas</th>
+                                                <th>Atas Nama</th>
+                                                <th>Alamat</th>
+                                                <th>Nilai Appraisal</th>
                                                 <th>Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($nilai_corporates as $item)
+                                            @foreach ($nilai_houses as $item)
                                                 <tr>
                                                     <td>{{ str_pad($item->coll_id, 4, 0, STR_PAD_LEFT) }}</td>
-                                                    <td>{{ $item->nilai_corporate_guarantie }}</td>
-                                                    <td>{{ $item->nama_pt_penerima_corporate_guarantie }}</td>
-                                                    <td>{{ $item->nama_pt_pemberi_corporate_guarantie }}</td>
-                                                    <td>{{ $item->notelp_pt_pemberi_corporate_guarantie }}</td>
+                                                    <td>{{ $item->nilai_house_land }}</td>
+                                                    <td>{{ $item->no_shm_no_hgb }}</td>
+                                                    <td>{{ $item->luas }}</td>
+                                                    <td>{{ $item->atas_nama }}</td>
+                                                    <td>{{ $item->alamat }}</td>
+                                                    <td>{{ $item->nilai_appraisal }}</td>
                                                     <td>{{ $item->status }}</td>
                                                 </tr>
                                             @endforeach

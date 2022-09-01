@@ -17,17 +17,17 @@
 
         @if (session('success'))
             <div class="alert alert-success alert-dismissable custom-success-box" style="margin: 15px;">
-                <a href="{{ route('corporate') }}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <a href="{{ route('inventory') }}" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                 <strong> {{ session('success') }} </strong>
             </div>
         @endif
 
         <!-- Main content -->
-        <form action="{{ route('corporateStore') }}" method="POST">
+        <form action="{{ route('inventoryStore') }}" method="POST">
             @csrf
             <section class="col-xxl-6 connectedSortable px-5">
                 <div class="container mt-3">
-                    <h3>Collateral Utama - Corporate Guarantie</h3>
+                    <h3>Collateral Utama - Inventory</h3>
                     <div class="container px-5">
                         <div class="row">
                             <div class="col-sm-5 col-md-6">
@@ -50,39 +50,56 @@
                         <div class="row mt-2">
                             <div class="col-sm-5 col-md-6">
                                 <label for="exampleFormControlInput1" class="form-label">Coll ID</label>
-                                <input type="input" class="form-control" readonly disabled
-                                    value="{{ str_pad($coll_id, 4, 0, STR_PAD_LEFT) }}" name="coll_id"
+                                <input type="input" class="form-control" value="{{ str_pad($coll_id, 4, 0, STR_PAD_LEFT) }}"
+                                    readonly disabled name="coll_id" id="exampleFormControlInput1">
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-sm-5 col-md-6">
+                                <label for="exampleFormControlInput1" class="form-label">Nilai - Inv </label>
+                                <input type="input" class="form-control" name="nilai_inv" id="exampleFormControlInput1">
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-sm-5 col-md-6">
+                                <label for="exampleFormControlInput1" class="form-label">Nama Inventory</label>
+                                <input type="input" class="form-control" name="nama_inventory"
                                     id="exampleFormControlInput1">
                             </div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-sm-5 col-md-6">
-                                <label for="exampleFormControlInput1" class="form-label">Nilai - Corporate Guarantie</label>
-                                <input type="input" class="form-control" name="nilai_corporate_guarantie"
+                                <label for="exampleFormControlInput1" class="form-label">Besarnya Inventory</label>
+                                <input type="input" class="form-control" name="besarnya_inventory"
                                     id="exampleFormControlInput1">
                             </div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-sm-5 col-md-6">
-                                <label for="exampleFormControlInput1" class="form-label">Nama PT Penerima Corporate
-                                    Guarantie</label>
-                                <input type="input" class="form-control" name="nama_pt_penerima_corporate_guarantie"
+                                <label for="exampleFormControlInput1" class="form-label">Nilai Inventory</label>
+                                <input type="input" class="form-control" name="nilai_inventory"
                                     id="exampleFormControlInput1">
                             </div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-sm-5 col-md-6">
-                                <label for="exampleFormControlInput1" class="form-label">Nama PT Pemberi Corporate
-                                    Guarantie</label>
-                                <input type="input" class="form-control" name="nama_pt_pemberi_corporate_guarantie"
+                                <label for="exampleFormControlInput1" class="form-label">Alamat Inventory</label>
+                                <input type="input" class="form-control" name="alamat_inventory"
                                     id="exampleFormControlInput1">
                             </div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-sm-5 col-md-6">
-                                <label for="exampleFormControlInput1" class="form-label">Notelp PT Pemberi Corporate
-                                    Guarantie</label>
-                                <input type="input" class="form-control" name="notelp_pt_pemberi_corporate_guarantie"
+                                <label for="exampleFormControlInput1" class="form-label">Atas Nama Inventory</label>
+                                <input type="input" class="form-control" name="atas_nama_inventory"
+                                    id="exampleFormControlInput1">
+                            </div>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-sm-5 col-md-6">
+                                <label for="exampleFormControlInput1" class="form-label">Alamat Atas Nama
+                                    Inventory</label>
+                                <input type="input" class="form-control" name="alamat_atas_nama_inventory"
                                     id="exampleFormControlInput1">
                             </div>
                         </div>
@@ -101,7 +118,7 @@
                         <div class="col-12 py-2">
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="card-title">Collateral Utama - Corporate</h3>
+                                    <h3 class="card-title">Collateral Utama - Inventory</h3>
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body table-responsive p-0">
@@ -109,21 +126,27 @@
                                         <thead>
                                             <tr>
                                                 <th>Coll ID</th>
-                                                <th>Nilai - Corporate Gurantie</th>
-                                                <th>Nama PT Penerima Corporate Guarantie</th>
-                                                <th>Nama PT Pemberi Corporate Guarantie</th>
-                                                <th>Notelp PT Pemberi Corporate Guarantie</th>
+                                                <th>Nilai - Inv</th>
+                                                <th>Nama Inventory</th>
+                                                <th>Besarnya Inventory</th>
+                                                <th>Nilai Inventory</th>
+                                                <th>Alamat Inventory</th>
+                                                <th>Atas Nama Inventory</th>
+                                                <th>Alamat Atas Nama Inventory</th>
                                                 <th>Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($nilai_corporates as $item)
+                                            @foreach ($nilai_inve as $item)
                                                 <tr>
                                                     <td>{{ str_pad($item->coll_id, 4, 0, STR_PAD_LEFT) }}</td>
-                                                    <td>{{ $item->nilai_corporate_guarantie }}</td>
-                                                    <td>{{ $item->nama_pt_penerima_corporate_guarantie }}</td>
-                                                    <td>{{ $item->nama_pt_pemberi_corporate_guarantie }}</td>
-                                                    <td>{{ $item->notelp_pt_pemberi_corporate_guarantie }}</td>
+                                                    <td>{{ $item->nilai_inv }}</td>
+                                                    <td>{{ $item->nama_inventory }}</td>
+                                                    <td>{{ $item->besarnya_inventory }}</td>
+                                                    <td>{{ $item->nilai_inventory }}</td>
+                                                    <td>{{ $item->alamat_inventory }}</td>
+                                                    <td>{{ $item->atas_nama_inventory }}</td>
+                                                    <td>{{ $item->alamat_atas_nama_inventory }}</td>
                                                     <td>{{ $item->status }}</td>
                                                 </tr>
                                             @endforeach
