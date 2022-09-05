@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Collateral;
+use Illuminate\Database\Eloquent\Model;
 
 class MotorController extends Controller
 {

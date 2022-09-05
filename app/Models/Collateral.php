@@ -56,6 +56,9 @@ class Collateral extends Model
         'nama_pt_penerima_corporate_guarantie',
         'nama_pt_pemberi_corporate_guarantie',
         'notelp_pt_pemberi_corporate_guarantie',
+        'create_by',
+        'updated_date'
     ];
 
+    public $timestamps = false;
 }
