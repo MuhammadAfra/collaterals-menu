@@ -20,6 +20,7 @@ class FrontendController extends Controller
         $nilai_motor_vehicles = DB::table('collaterals')->where('nilai_motor_vehicle', '>', 1)->get();
         // $dataMotorVehicle = Collateral::all();
         $coll_id = Collateral::pluck('coll_id')->last() + 1;
+        $debitur_id = Collateral::pluck('coll_id')->last() + 1;
         return view('pages.frontend.motor_vehicle', compact('coll_id', 'nilai_motor_vehicles'));
     }
 
