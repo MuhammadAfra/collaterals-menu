@@ -38,13 +38,13 @@
                         <div class="row mt-2">
                             <div class="col-sm-5 col-md-6">
                                 <label for="exampleFormControlInput1" class="form-label">Debitur ID</label>
-                                <input type="input" value="{{ str_pad($debitur_id, 4, 0, STR_PAD_LEFT) }}" class="form-control" name="debitur_id" id="exampleFormControlInput1">
+                                <input type="input" value="{{ $debitur_id }}" class="form-control" name="debitur_id" id="exampleFormControlInput1">
                             </div>
                         </div>
                         <div class="row mt-2">
                             <div class="col-sm-5 col-md-6">
                                 <label for="exampleFormControlInput1" class="form-label">Produk ID</label>
-                                <input type="input" value="{{ str_pad($produk_id, 4, 0, STR_PAD_LEFT) }}" class="form-control" name="produk_id" id="exampleFormControlInput1">
+                                <input type="input" value="{{ $produk_id }}" class="form-control" name="produk_id" id="exampleFormControlInput1">
                             </div>
                         </div>
                         <div class="row mt-2">
@@ -60,7 +60,7 @@
                                 <label for="exampleFormControlInput1" class="form-label">Nilai - Car Vehicle</label>
                                 <input type="input" class="form-control" name="nilai_car_vehicle"
                                     id="exampleFormControlInput1">
-                            </div>
+                            </div> 
                         </div>
                         <div class="row mt-2">
                             <div class="col-sm-5 col-md-6">
