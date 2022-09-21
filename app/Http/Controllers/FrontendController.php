@@ -15,7 +15,6 @@ class FrontendController extends Controller
         return view('pages.frontend.index');
     }
 
-
     //UTAMA
 
     public function motor_vehicle(Request $request)
